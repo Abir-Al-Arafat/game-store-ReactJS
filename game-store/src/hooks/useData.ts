@@ -8,6 +8,8 @@ interface FetchResponse<T>{
     results: T[];
 }
 
+// for fetching data with different endpoints
+// takes endpoint as a parameter
 const useData = <T>(endpoint: string) => {
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState("");
