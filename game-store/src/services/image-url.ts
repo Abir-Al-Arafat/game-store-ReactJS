@@ -1,6 +1,7 @@
 
 // function for getting a cropped image from the URL
 const getCroppedImageUrl = (url: string) => {
+  if (!url) return '';
   // parameter adding point   
   const target = 'media/'
   // index of this portion: https://media.rawg.io/media/   
