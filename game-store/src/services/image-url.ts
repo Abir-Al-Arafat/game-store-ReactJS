@@ -1,7 +1,8 @@
+import noImage from '../assets/no-image-placeholder.webp'
 
 // function for getting a cropped image from the URL
 const getCroppedImageUrl = (url: string) => {
-  if (!url) return '';
+  if (!url) return noImage;
   // parameter adding point   
   const target = 'media/'
   // index of this portion: https://media.rawg.io/media/   
