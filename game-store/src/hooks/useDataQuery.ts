@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import { AxiosRequestConfig, CanceledError } from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { Platform, Game } from "./useGames";
+import { AxiosRequestConfig } from "axios";
+import apiClient from "../services/api-client";
+import { Game } from "./useGames";
 
 // "T" is the generic type parameter
 export interface FetchResponse<T> {
