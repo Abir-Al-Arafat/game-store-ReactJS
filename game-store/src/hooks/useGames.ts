@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
 import APIClient, { FetchResponse } from "../services/api-client";
 import useDataQuery from "./useDataQuery";
@@ -15,42 +15,24 @@ export interface Game {
   rating_top: number;
 }
 
-// const useGames = (gameQuery: GameQuery) =>
-//   useData<Game>(
-//     "/games",
-//     {
-//       params: {
-//         genres: gameQuery.genre?.id,
-//         platforms: gameQuery.platform?.id,
-//         ordering: gameQuery.sortOrder,
-//         search: gameQuery.searchText,
-//       },
-//     },
-//     [gameQuery]
-//   );
-
-// const useGames = (gameQuery: GameQuery) =>
-//   useDataQuery<Game>("/games", {
-//     params: {
-//       genres: gameQuery.genre?.id,
-//       platforms: gameQuery.platform?.id,
-//       ordering: gameQuery.sortOrder,
-//       search: gameQuery.searchText,
-//     },
-//   });
-
 const useGames = (gameQuery: GameQuery) =>
-  useQuery<FetchResponse<Game>, Error>({
+  useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
-    queryFn: () =>
+    queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
           genres: gameQuery.genre?.id,
           parent_platforms: gameQuery.platform?.id,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
+          page: pageParam,
         },
       }),
+    // this function returns next page number
+    // allPages contains all data of each page
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    },
   });
 
 export default useGames;
