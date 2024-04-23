@@ -17,7 +17,7 @@ const ExpandableText = ({ paragraph, limit }: Props) => {
   const summary = expanded ? paragraph : paragraph.substring(0, limit) + "...";
 
   return (
-    <Text>
+    <Text marginTop={5}>
       {summary}
       <Button
         size="xs"
