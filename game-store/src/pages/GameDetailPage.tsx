@@ -5,6 +5,8 @@ import GameAttributes from "../components/GameAttributes";
 import useGame from "../hooks/useGame";
 import useTrailers from "../hooks/useTrailers";
 import GameTrailer from "../components/GameTrailer";
+import useScreenshots from "../hooks/useScreenshots";
+import GameScreenshots from "../components/GameScreenshots";
 const GameDetailPage = () => {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
@@ -16,6 +18,16 @@ const GameDetailPage = () => {
 
   if (!loadingTrailer && !errorTrailer) {
     console.log("trailer", trailer);
+  }
+
+  const {
+    data: screenshots,
+    isLoading: loadingScreenshots,
+    error: errorScreenshots,
+  } = useScreenshots(game?.id!);
+
+  if (!loadingScreenshots && !errorScreenshots) {
+    console.log("screenshots", screenshots);
   }
 
   // if (slug) {
@@ -32,6 +44,7 @@ const GameDetailPage = () => {
       ></ExpandableText>
       <GameAttributes game={game}></GameAttributes>
       <GameTrailer gameId={game.id} />
+      <GameScreenshots gameId={game.id} />
     </>
   );
 };
