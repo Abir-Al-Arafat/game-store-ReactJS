@@ -7,4 +7,4 @@ React-Query is used for state management
 
 Run npm run dev to start web server
 
-Deployed At: https://game-store-abir.vercel.app/
+Deployed At: https://gamestore-abir.netlify.app/
