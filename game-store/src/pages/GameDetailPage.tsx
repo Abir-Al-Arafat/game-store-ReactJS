@@ -1,11 +1,18 @@
+import { FaArrowRight, FaAngleRight } from "react-icons/fa";
+import { selectedItemColor } from "../constants/colors";
 import {
   GridItem,
   Heading,
   SimpleGrid,
   Spinner,
   Divider,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  color,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ExpandableText from "../components/ExpandableText";
 import GameAttributes from "../components/GameAttributes";
 import useGame from "../hooks/useGame";
@@ -43,6 +50,25 @@ const GameDetailPage = () => {
   if (error || !game) throw error;
   return (
     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+      <GridItem colSpan={{ base: 1, md: 2 }}>
+        <Breadcrumb separator={<FaAngleRight color="gray.500" />}>
+          <BreadcrumbItem>
+            <BreadcrumbLink
+              as={Link}
+              to="/"
+              _hover={{ color: selectedItemColor }}
+              textDecoration="none"
+            >
+              Home
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink textColor={selectedItemColor}>
+              {game.name}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+      </GridItem>
       <GridItem>
         <Heading>{game.name}</Heading>
         <Divider />

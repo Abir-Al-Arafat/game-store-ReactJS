@@ -1,3 +1,4 @@
+import { selectedItemColor } from "../constants/colors";
 import { Card, Image, CardBody, Heading, Text, HStack } from "@chakra-ui/react";
 import Game from "../entities/Game";
 import PlatformIconList from "./PlatformIconList";
@@ -26,7 +27,7 @@ const GameCard = ({ game }: Props) => {
           />
           <CriticScore score={game.metacritic} />
         </HStack>
-        <Heading fontSize="2xl">
+        <Heading fontSize="2xl" _hover={{ color: selectedItemColor }}>
           <Link to={`/games/${game.slug}`}>
             {game.name} <Emoji rating={game.rating_top} />
           </Link>
