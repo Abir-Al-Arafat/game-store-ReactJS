@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
 import ExpandableText from "../components/ExpandableText";
+import ExpandCollapseText from "../components/ExpandCollapseText";
 import GameAttributes from "../components/GameAttributes";
 import useGame from "../hooks/useGame";
 import useTrailers from "../hooks/useTrailers";
@@ -72,10 +73,14 @@ const GameDetailPage = () => {
       <GridItem>
         <Heading>{game.name}</Heading>
         <Divider />
-        <ExpandableText
+        {/* <ExpandableText
           paragraph={game.description_raw}
           limit={300}
-        ></ExpandableText>
+        ></ExpandableText> */}
+        <ExpandCollapseText
+          paragraph={game.description_raw}
+          limit={200}
+        ></ExpandCollapseText>
         <GameAttributes game={game}></GameAttributes>
       </GridItem>
       <GridItem>
