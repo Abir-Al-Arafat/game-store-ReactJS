@@ -1,6 +1,8 @@
 # game-store-ReactJS
 This is a website for exploring games with features like searching, sorting, filtering, infinite scrolling. 
 
+## RawgAPI has been used for data fetching. link: https://api.rawg.io/docs/
+
 ### Following libraries and frameworks have been used
 - ReactJS
 - TypeScript 
