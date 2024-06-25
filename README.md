@@ -11,6 +11,6 @@ This is a website for exploring games with features like searching, sorting, fil
 - Axios and React-Query is used for handling data fetching, caching
 - Zustand is used for state management
 
-Run npm run dev to start web server
-RawgAPI has been used for data fetching. link: https://api.rawg.io/docs/
+Run npm run dev to start web server <br>
+RawgAPI has been used for data fetching. link: https://api.rawg.io/docs/ <br>
 Deployed At: https://gamestore-abir.vercel.app/
